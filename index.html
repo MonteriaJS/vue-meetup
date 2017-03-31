@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,0">
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <section id="app">
+        <header>
+            <nav>
+                <ul>
+                    <li><strong>Mi FamiliApp</strong></li>
+                </ul>
+            </nav>
+        </header>
+        <article>
+            <h1>Añadir familiar</h1>
+            <p>Rellene el formulario para añadir un familiar</p>
+            <form @submit.prevent="onSubmit">
+                <fieldset>
+                    <label>Nombres:</label> 
+                    <input v-model="nombres" type="text" placeholder="Ej: Carlos A. Escobar"><span>{{ warning }}</span>
+                    <label></label>
+                    <label>Edad</label>
+                    <input v-model="edad" type="number" min="1" placeholder="Ej: 21">
+                    <label>Genero</label>
+                    <select v-model="genero">
+                        <option>Masculino</option>
+                        <option>Femenino</option>
+                    </select>
+                    <label>Parentesco</label>
+                    <input v-model="parentesco" type="text" placeholder="Ej: Primo, Sobrino, Padre">
+                    <label>Presiona añadir para agregar el miembro</label>
+                    <button type="submit">Añadir</button>
+                    <button type="reset">Reiniciar</button>
+                </fieldset>
+            </form>
+            <p>{{ error }}</p>
+        </article>
+        <article v-show="familia.length > 0">
+            <h1>Listado de familiares</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombres </th>
+                        <th>Edad</th>
+                        <th>Genero</th>
+                        <th>Parentesco</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(miembro,index) in familia">
+                        <td>{{ miembro.nombres }}</td>
+                        <td>{{ miembro.edad }}</td>
+                        <td>{{ miembro.genero }}</td>
+                        <td>{{ miembro.parentesco }}</td>
+                        <td><button @click="onDelete(index)" type="submit">Eliminar</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </article>
+        <footer>
+            <nav>
+                <ul>
+                    <li>
+                        <small>Creado por la comunidad MonteríaJS</small>
+                    </li>
+                </ul>
+            </nav>
+        </footer>
+    </section>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

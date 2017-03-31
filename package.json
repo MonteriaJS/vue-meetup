@@ -1,0 +1,9 @@
+{
+  "name": "vue-meetup",
+  "version": "1.0.0",
+  "description": "Example app",
+  "main": "index.html",
+  "repository": "https://github.com/MonteriaJS/vue-meetup",
+  "author": "carlosjs23",
+  "license": "MIT"
+}
